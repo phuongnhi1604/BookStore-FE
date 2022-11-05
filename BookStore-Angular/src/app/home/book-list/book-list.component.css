@@ -1,0 +1,25 @@
+.cus_font {
+  font-size: 0.9rem;
+}
+
+.cus-cart{
+  padding-left: 50px;
+  padding-bottom: 1px;
+}
+#lblCartCount {
+  vertical-align: top;
+  margin-left: -10px;
+}
+
+.cus-input {
+  border-radius: 15px;
+  width: 50px;
+}
+.cus-btn {
+  border-radius: 15px;
+}
+
+.shop_section .container .box:hover{
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+}
