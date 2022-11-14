@@ -1,0 +1,43 @@
+<!-- shop section -->
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center" style="margin-top: -30px">
+      <h2>
+        {{category.categoryName}}
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xl-3" *ngFor="let book of bookList | paginate: {itemsPerPage: size, currentPage: page, totalItems: totalElements}; let i = index">
+        <div class="box">
+          <a [routerLink]="['/book/detail', book.bookId]">
+            <div class="img-box">
+              <img src="{{book.bookImage}}" alt="image">
+            </div>
+            <div class="detail-box">
+              <h6>
+                {{book.bookName}}
+              </h6>
+            </div>
+            <div class="new" *ngIf="book.bookPublishDate < currentDate.getTime()">
+                <span>
+                  Mới
+                </span>
+            </div>
+          </a>
+        </div>
+        <div class="cus-price" *ngIf="book.bookPromotionId.promotionId !== 1">
+          Giá:
+          <span class="original">{{book.bookPrice}}.000 <sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">39.000<sup>đ</sup></span>
+        </div>
+        <div class="cus-price" *ngIf="book.bookPromotionId.promotionId === 1">
+          Giá:
+          <span class="original">{{book.bookPrice}}.000 <sup>đ</sup></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="totalElements > 4" style="display: flex; justify-content: center; align-items: center; margin-top: 30px">
+    <pagination-controls (pageChange)="getAllBookByCategoryId(id, $event)"></pagination-controls>
+  </div>
+</section>
+<!-- end shop section -->

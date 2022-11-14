@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {IBook} from '../../model/book/ibook';
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  selector: 'app-book-list-more',
+  templateUrl: './book-list-more.component.html',
+  styleUrls: ['./book-list-more.component.css']
 })
-export class BookListComponent implements OnInit {
+export class BookListMoreComponent implements OnInit {
   bookList: IBook[] = [];
   page = 1;
   size: number;
@@ -37,4 +37,5 @@ export class BookListComponent implements OnInit {
       }
     );
   }
+
 }

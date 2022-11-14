@@ -10,46 +10,43 @@
           <div class="col-md-6">
             <div class="box">
               <div class="img-box">
-                <img class="img-fluid" src="/assets/images/mien-nam-viet-nam-tu-sau-dien-bien-phu_200-2.jpg" alt="image">
+                <img class="img-fluid" src="{{book.bookImage}}" alt="image">
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="product-dtl">
               <div class="product-info">
-                <div class="product-name">Tên sách</div>
+                <div class="product-name"><span>{{book.bookName}}</span></div>
                 <hr style="height:2px;border-width:0;background-color:#3b4a6b">
                 <div class="detail">
                   <ul  style=" font-size: 13px">
-                    <li>Mã sản phẩm: </li>
+                    <li><span style="font-weight: bold">Mã sản phẩm:</span> {{book.bookCode}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Tác giả: </li>
+                    <li><span style="font-weight: bold">Tác giả: </span>{{book.bookAuthorId.authorName}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Dịch giả: </li>
+                    <li><span style="font-weight: bold">Dịch giả: </span>{{book.bookTranslator}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Nhà xuất bản: </li>
+                    <li><span style="font-weight: bold">Nhà xuất bản: </span>{{book.bookPublisher}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Số trang: </li>
+                    <li><span style="font-weight: bold">Số trang: </span>{{book.bookTotalPage}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Kích thước: </li>
+                    <li><span style="font-weight: bold">Kích thước: </span>{{book.bookSize}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
-                    <li>Ngày phát hành: </li>
+                    <li><span style="font-weight: bold">Ngày phát hành: </span>{{book.bookPublishDate | date: 'dd/MM/yyyy'}}</li>
                     <hr style="height: 0.5px;width: 91%;margin-left:0;border-width:0;background-color:grey">
 
                   </ul>
                 </div>
-                <div class="product-price-discount"><span>Giá: 29.000<sup>đ</sup></span><span class="line-through">39.000<sup>đ</sup></span>
+                <div class="product-price-discount" *ngIf="book.bookPromotionId.promotionId === 1">
+                  <span>Giá: {{book.bookPrice}}.000<sup>đ</sup></span>
+                </div>
+                <div class="product-price-discount" *ngIf="book.bookPromotionId.promotionId !== 1">
+                  <span>Giá: {{promotionPrice}}<span>.000</span><sup>đ</sup></span>
+                  <span class="line-through">{{book.bookPrice}}<span>.000</span><sup>đ</sup></span>
                 </div>
               </div>
-              <div class="product-count">
-                <label>Số lượng</label>
-                <form action="#" class="display-flex">
-                  <button class="qtyminus">-</button>
-                  <input type="text" name="quantity" value="1" class="qty">
-                  <button class="qtyplus">+</button>
-                </form>
                 <button href="#" class="round-black-btn">Thêm vào giỏ hàng</button>
-              </div>
             </div>
           </div>
         </div>
@@ -70,12 +67,9 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="description" role="tabpanel"
              aria-labelledby="description-tab">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-          error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+          <span>
+            {{book.bookContent}}
+          </span>
         </div>
       </div>
     </div>
@@ -85,78 +79,82 @@
     <section class="shop_section">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-xl-3">
+          <div class="col-sm-6 col-xl-3" *ngFor="let bookAuthor of bookListByAuthor">
             <div class="box">
-              <a href="#">
+              <a >
                 <div class="img-box">
-                  <img src="/assets/images/mien-nam-viet-nam-tu-sau-dien-bien-phu_200-2.jpg" alt="image">
+                  <img src="{{bookAuthor.bookImage}}" alt="image">
                 </div>
                 <div class="detail-box">
                   <h6>
-                    Miền Nam Việt Nam từ sau Điện Biên Phủ
+                    {{bookAuthor.bookName}}
                   </h6>
                 </div>
               </a>
             </div>
-            <div class="cus-price">
+            <div class="cus-price" *ngIf="bookAuthor.bookPromotionId.promotionId !== 1">
               Giá:
-              <span>55.000 <sup>đ</sup></span>
+              <span class="original">{{bookAuthor.bookPrice}}.000 <sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">39.000<sup>đ</sup></span>
+            </div>
+            <div class="cus-price" *ngIf="bookAuthor.bookPromotionId.promotionId === 1">
+              Giá:
+              <span class="original">{{bookAuthor.bookPrice}}.000 <sup>đ</sup></span>
             </div>
           </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="box">
-              <a href="">
-                <div class="img-box">
-                  <img src="/assets/images/Toi_tu_hao_la_nguoi_viet_nam-2.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h6>
-                    Tôi tự hào là người Việt Nam
-                  </h6>
-                </div>
-              </a>
-            </div>
-            <div class="cus-price">
-              Giá:
-              <span>55.000 <sup>đ</sup></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="box">
-              <a href="">
-                <div class="img-box">
-                  <img src="/assets/images/ChapChungLonLen1.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h6>
-                    Chập chững lớn lên - Mau khỏe nhé bố ơi!
-                  </h6>
-                </div>
-              </a>
-            </div>
-            <div class="cus-price">
-              Giá:
-              <span>55.000 <sup>đ</sup></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="box">
-              <a href="">
-                <div class="img-box">
-                  <img src="/assets/images/ChapChungLonLen2.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h6>
-                    Chập chững lớn lên - Đến lượt cậu đấy!
-                  </h6>
-                </div>
-              </a>
-            </div>
-            <div class="cus-price">
-              Giá:
-              <span>55.000 <sup>đ</sup></span>
-            </div>
-          </div>
+<!--          <div class="col-sm-6 col-xl-3">-->
+<!--            <div class="box">-->
+<!--              <a href="">-->
+<!--                <div class="img-box">-->
+<!--                  <img src="/assets/images/Toi_tu_hao_la_nguoi_viet_nam-2.jpg" alt="">-->
+<!--                </div>-->
+<!--                <div class="detail-box">-->
+<!--                  <h6>-->
+<!--                    Tôi tự hào là người Việt Nam-->
+<!--                  </h6>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="cus-price">-->
+<!--              Giá:-->
+<!--              <span>55.000 <sup>đ</sup></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-sm-6 col-xl-3">-->
+<!--            <div class="box">-->
+<!--              <a href="">-->
+<!--                <div class="img-box">-->
+<!--                  <img src="/assets/images/ChapChungLonLen1.png" alt="">-->
+<!--                </div>-->
+<!--                <div class="detail-box">-->
+<!--                  <h6>-->
+<!--                    Chập chững lớn lên - Mau khỏe nhé bố ơi!-->
+<!--                  </h6>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="cus-price">-->
+<!--              Giá:-->
+<!--              <span>55.000 <sup>đ</sup></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-sm-6 col-xl-3">-->
+<!--            <div class="box">-->
+<!--              <a href="">-->
+<!--                <div class="img-box">-->
+<!--                  <img src="/assets/images/ChapChungLonLen2.png" alt="">-->
+<!--                </div>-->
+<!--                <div class="detail-box">-->
+<!--                  <h6>-->
+<!--                    Chập chững lớn lên - Đến lượt cậu đấy!-->
+<!--                  </h6>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="cus-price">-->
+<!--              Giá:-->
+<!--              <span>55.000 <sup>đ</sup></span>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </section>

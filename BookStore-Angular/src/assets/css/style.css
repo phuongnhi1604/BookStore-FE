@@ -154,7 +154,7 @@ a:focus {
   margin-right: 5px;
 }
 
-.custom_nav-container {
+.custom_bcontainer {
   padding: 0;
 }
 
@@ -398,7 +398,7 @@ a:focus {
   margin-top: 25px;
   border-radius: 15px;
   overflow: hidden;
-  height: 360px;
+  height: 380px;
 }
 
 .shop_section .box a {
@@ -436,10 +436,10 @@ a:focus {
 
 .shop_section .cus-price{
   position: absolute;
-  top: 21.5rem;
+  top: 22.5rem;
   left: 28px;
 }
-.shop_section .cus-price span{
+.shop_section .cus-price .original{
   color: #3b4a6b;
   font-weight: 600;
 }

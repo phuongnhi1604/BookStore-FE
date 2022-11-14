@@ -50,7 +50,7 @@
 .login-card-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.7rem;
 }
 
 .login-card-form .form-item {
@@ -128,7 +128,7 @@
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .login-card-social > div {
@@ -160,6 +160,11 @@
 .login-card-social-btns a:hover {
   background: white;
   transform: scale(1.1);
+}
+
+.cus-error .mess {
+  color: red;
+  font-size: small;
 }
 
 /* Reponsive */

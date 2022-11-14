@@ -112,195 +112,36 @@
       </h2>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-xl-3">
+      <div class="col-sm-6 col-xl-3" *ngFor="let book of bookList | paginate: {itemsPerPage: size, currentPage: page, totalItems: totalElements}; let i = index">
         <div class="box">
-          <a routerLink="book/detail">
+          <a [routerLink]="['/book/detail', book.bookId]">
             <div class="img-box">
-              <img src="/assets/images/mien-nam-viet-nam-tu-sau-dien-bien-phu_200-2.jpg" alt="image">
+              <img src="{{book.bookImage}}" alt="image">
             </div>
             <div class="detail-box">
               <h6>
-                Miền Nam Việt Nam từ sau Điện Biên Phủ
+                {{book.bookName}}
               </h6>
             </div>
-            <div class="new">
+            <div class="new" *ngIf="i<=8">
                 <span>
                   Mới
                 </span>
             </div>
           </a>
         </div>
-        <div class="cus-price">
+        <div class="cus-price" *ngIf="book.bookPromotionId.promotionId !== 1">
           Giá:
-          <span>55.000 <sup>đ</sup></span>
+          <span class="original">{{book.bookPrice}}.000 <sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">39.000<sup>đ</sup></span>
         </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/Toi_tu_hao_la_nguoi_viet_nam-2.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Tôi tự hào là người Việt Nam
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
+        <div class="cus-price" *ngIf="book.bookPromotionId.promotionId === 1">
           Giá:
-          <span>55.000 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/ChapChungLonLen1.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Chập chững lớn lên - Mau khỏe nhé bố ơi!
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>55.000 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/ChapChungLonLen2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Chập chững lớn lên - Đến lượt cậu đấy!
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>55.000 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/TamThe3.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Tam thể 3 - Tử thần sống mãi
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>232.000 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6  col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/SangTrang.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Sáng trăng
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>60.000 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/LuocSuTonGiao.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Lược sử tôn giáo
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>103.200 <sup>đ</sup></span>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="/assets/images/PhuDungOi.jpg" alt="image">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Phù Dung ơi, vĩnh biệt (Danh Tác)
-              </h6>
-            </div>
-            <div class="new">
-                <span>
-                  Mới
-                </span>
-            </div>
-          </a>
-        </div>
-        <div class="cus-price">
-          Giá:
-          <span>68.800<sup>đ</sup></span>
+          <span class="original">{{book.bookPrice}}.000 <sup>đ</sup></span>
         </div>
       </div>
     </div>
-    <div class="btn-box">
-      <a href="">
-        View All
-      </a>
+    <div *ngIf="totalElements > 16" style="display: flex; justify-content: center; align-items: center; margin-top: 30px">
+      <pagination-controls (pageChange)="getAllTopNewBook($event)"></pagination-controls>
     </div>
   </div>
 </section>

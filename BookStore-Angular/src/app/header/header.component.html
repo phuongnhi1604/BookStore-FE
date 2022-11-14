@@ -24,42 +24,73 @@
     </div>
   </nav>
 </div>
-  <!-- header section strats -->
-  <header class="header_section">
-    <div class="container-fluid">
-      <div class="row flex-wrap d-flex embed-responsive" style="justify-content: center; align-items: center">
-        <a class="navbar-brand" routerLink="/">
-          <img src="/assets/images/Blue Modern illustration Book Store Logo.png" alt="logo">
-        </a>
-        <form class="input-group mb-3 w-50 mt-2">
-          <input type="text" class="form-control cus-input" placeholder="Tìm kiếm sách..." style="font-size: small">
-          <div class="input-group-append ">
-            <button class="btn btn-outline-warning cus-btn" style="height: 87%" type="button"><img width="20" height="20" src="/assets/images/search.svg"></button>
-          </div>
-        </form>
-        <div class="cus-cart">
-          <!--          <img src="assets/images/user.svg" style="padding-right: 3px">-->
-          <a href="/#jump" style="color: #000000" routerLink="/login">Đăng nhập </a>
+<!-- header section strats -->
+<header class="header_section">
+  <div class="container-fluid">
+    <div class="row flex-wrap d-flex embed-responsive"
+         style="justify-content: center; align-items: center; height: 90px">
+      <a class="navbar-brand" routerLink="/">
+        <img src="/assets/images/Blue Modern illustration Book Store Logo.png" alt="logo">
+      </a>
+      <form class="input-group mb-3 w-50 mt-2">
+        <input type="text" class="form-control cus-input" placeholder="Tìm kiếm sách..." style="font-size: small">
+        <div class="input-group-append ">
+          <button class="btn btn-outline-warning cus-btn" style="height: 87%" type="button"><img width="20" height="20"
+                                                                                                 src="/assets/images/search.svg">
+          </button>
+        </div>
+      </form>
+      <div class="cus-cart d-flex">
+        <!--          <img src="assets/images/user.svg" style="padding-right: 3px">-->
+        <div *ngIf="!isLoggedIn">
+          <a style="color: #000000" routerLink="/login">Đăng nhập </a>
           <small>|</small>
-          <a href="/#jump" style="color: #000000" routerLink="/register"> Đăng ký</a>
+          <a style="color: #000000" routerLink="/register"> Đăng ký</a>
+        </div>
+        <div *ngIf="isLoggedIn">
+          <div class="img-dropdown">
+            <img style="cursor: pointer" src="assets/images/user.svg">
+            <ul class="img-dropdown-content cus-content" role="menu" aria-labelledby="menu1">
+              <li role="presentation"><span>Tài khoản: {{userName}}</span></li>
+              <li role="presentation" class="cus-li"><a style="color: #000000; text-decoration: none" role="menuitem"
+                                                        href="#">Thông tin tài khoản</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cus-cart-position" *ngIf="!isLoggedIn">
+          <a routerLink="/login">
+            <!-- <i class="fa fa-cart-plus" aria-hidden="true"></i> -->
+            <!-- <i class="fa fa-shopping-cart"></i> -->
+            <!-- <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/000000/external-cart-supermarket-wanicon-lineal-wanicon.png"/> -->
+            <img src="/assets/images/shopping-bag.svg"/>
+          </a>
+        </div>
+        <div class="cus-cart-position" *ngIf="isLoggedIn">
           <a routerLink="cart/detail">
             <!-- <i class="fa fa-cart-plus" aria-hidden="true"></i> -->
             <!-- <i class="fa fa-shopping-cart"></i> -->
             <!-- <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/000000/external-cart-supermarket-wanicon-lineal-wanicon.png"/> -->
-            <img src="/assets/images/shopping-bag.svg" style="padding-left: 7px"/><span class="badge" id="lblCartCount">12</span>
+            <img src="/assets/images/shopping-bag.svg"/> <span class="badge" id="lblCartCount">12</span>
           </a>
-          <!-- <a href="">
-              <i class="fa fa-search" aria-hidden="true"></i>
-          </a> -->
         </div>
+
+        <!-- <a href="">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </a> -->
       </div>
+      <div *ngIf="isLoggedIn" style="margin-bottom: 17px; margin-left: 30px">
+        <button style="border: none; background-color: white; padding: 0" (click)="logout()">
+          Đăng xuất
+        </button>
+      </div>
+    </div>
+    <div>
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
           <span class=""> </span>
         </button>
-
         <div class="collapse navbar-collapse dtr-menu" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item active hover-underline-animation cus_font">
@@ -70,11 +101,7 @@
               <div class="dropdown nav-link hover-underline-animation">
                 Danh mục sách
                 <div class="dropdown-content" style="text-align: left;">
-                  <a style="text-transform: capitalize" href="watches.html">Văn học Việt Nam</a>
-                  <a style="text-transform: capitalize" href="watches.html">Văn học nước ngoài</a>
-                  <a style="text-transform: capitalize" href="watches.html">Thiếu nhi</a>
-                  <a style="text-transform: capitalize" href="watches.html">Thời sự - Chính
-                    trị</a>
+                  <a style="text-transform: capitalize" *ngFor="let category of categoryList" [routerLink]="['/book/category', category.categoryId]">{{category.categoryName}}</a>
                 </div>
               </div>
             </li>
@@ -82,7 +109,7 @@
               <a class="nav-link hover-underline-animation" routerLink="book/detail"> Sách bán chạy </a>
             </li>
             <li class="nav-item cus_font">
-              <a class="nav-link hover-underline-animation">Chương trình khuyến
+              <a class="nav-link hover-underline-animation" href="#">Chương trình khuyến
                 mãi</a>
             </li>
             <li class="nav-item cus_font">
@@ -92,8 +119,9 @@
         </div>
       </nav>
     </div>
-  </header>
-  <!-- end header section -->
+  </div>
+</header>
+<!-- end header section -->
 
 
 

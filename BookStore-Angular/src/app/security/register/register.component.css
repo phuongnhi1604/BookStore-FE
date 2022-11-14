@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.login-card {
+.register-card {
   background: rgba(243, 239, 239, 0.7);
   padding: 2rem;
   border-radius: 10px;
@@ -9,56 +9,56 @@
   height: 615px;
 }
 
-.login-card-header {
+.register-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-card-header,
-.login-card-footer {
+.register-card-header,
+.register-card-footer {
   text-align: center;
 }
-.login-card-footer {
+.register-card-footer {
   margin-top: 5px;
 }
 
-.login-card a {
+.register-card a {
   text-decoration: none;
   color: #35339a;
 }
 
-.login-card a:hover {
+.register-card a:hover {
   text-decoration: underline;
 }
 
-.login-card-header {
+.register-card-header {
   margin-bottom: 1.5rem;
 }
 
-.login-card-header h1 {
+.register-card-header h1 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: .01rem;
 }
 
-.login-card-header h1 + div {
+.register-card-header h1 + div {
   font-size: calc(1rem * .8);
   opacity: .8;
 }
 
-.login-card-form {
+.register-card-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.login-card-form .form-item {
+.register-card-form .form-item {
   position: relative;
   margin-right: 0;
 }
 
-.login-card-form .form-item .form-item-icon {
+.register-card-form .form-item .form-item-icon {
   position: absolute;
   top: .99rem;
   left: 1.4rem;
@@ -66,22 +66,22 @@
   opacity: .4;
   color: #000000;
 }
-.login-card-form .checkbox {
+.register-card-form .checkbox {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.login-card-form .form-item-other {
+.register-card-form .form-item-other {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: calc(1rem * .9);
   margin-bottom: .5rem;
 }
-.login-card input[type="text"],
-.login-card input[type="password"],
-.login-card input[type="email"] {
+.register-card input[type="text"],
+.register-card input[type="password"],
+.register-card input[type="email"] {
   border: none;
   outline: none;
   background: rgba(255, 255, 255, .7);
@@ -93,11 +93,11 @@
   font-size: small;
 }
 
-.login-card input:focus {
+.register-card input:focus {
   background: #ffffff;
 }
 
-.login-card input[type="checkbox"] {
+.register-card input[type="checkbox"] {
   width: 16px;
   height: 16px;
   accent-color: black;
@@ -105,7 +105,7 @@
   background: rgba(255, 255, 255, .7);
 }
 
-.login-card-form button {
+.register-card-form button {
   background: #e6c511;
   color: white;
   padding: 0.5rem;
@@ -116,7 +116,7 @@
   cursor: pointer;;
 }
 
-.login-card-form button:hover {
+.register-card-form button:hover {
   padding: 0.5rem;
   background-color: #ffff;
   color: black;
@@ -124,7 +124,7 @@
   border: none;
 }
 
-.login-card-social {
+.register-card-social {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -132,21 +132,21 @@
   margin-top: 3rem;
 }
 
-.login-card-social > div {
+.register-card-social > div {
   opacity: .8;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: calc(1rem * .8);
 }
 
-.login-card-social-btns {
+.register-card-social-btns {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
 
-.login-card-social-btns a {
+.register-card-social-btns a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -158,7 +158,7 @@
   transition: all .5s;
 }
 
-.login-card-social-btns a:hover {
+.register-card-social-btns a:hover {
   background: white;
   transform: scale(1.1);
 }
@@ -179,7 +179,7 @@
     padding: 2rem 0;
   }
 
-  .login-card {
+  .register-card {
     width: 400px;
     padding: 2rem;
     height: 880px;
@@ -193,7 +193,7 @@
   .height-input{
     height: 100px;
   }
-  .login-card {
+  .register-card {
     width: 500px;
     padding: 2rem;
     height: 640px;
@@ -208,7 +208,7 @@
     height: 120px;
   }
 
-  .login-card {
+  .register-card {
     width: 380px;
     padding: 2rem;
     height: 670px;
@@ -223,7 +223,7 @@
     height: 103px;
   }
 
-  .login-card {
+  .register-card {
     width: 400px;
     padding: 2rem;
     height: 670px;

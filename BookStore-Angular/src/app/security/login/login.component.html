@@ -13,25 +13,35 @@
             <div class="login-card-header" style="color: #3b4a6b">
               <h1>Đăng nhập</h1>
             </div>
-            <form class="login-card-form">
+            <form class="login-card-form" [formGroup]="loginForm" (ngSubmit)="login()">
               <div style="height: 70px">
                 <div class="form-item">
                   <span class="form-item-icon material-symbols-rounded">person</span>
-                  <input type="text" placeholder="Email/Tên đăng nhập">
+                  <input type="text" placeholder="Tên đăng nhập" formControlName="username" maxlength="20" name="username" id="username" autofocus>
                 </div>
+                <div class="cus-error" *ngIf="checkUserName !== ''">
+                  <span class="form-text mess">{{checkUserName}}</span>
+                </div>
+
               </div>
               <div style="height: 70px">
                 <div class="form-item">
                   <span class="form-item-icon material-symbols-rounded">lock</span>
-                  <input type="password" placeholder="Mật khẩu">
+                  <input type="password" placeholder="Mật khẩu" formControlName="password" name="password" id="password" maxlength="20">
+                </div>
+                <div class="cus-error" *ngIf="checkPassword !== ''">
+                  <span class="form-text mess">{{checkPassword}}</span>
                 </div>
               </div>
               <div class="form-item-other">
                 <div class="checkbox">
-                  <input type="checkbox" id="rememberMeCheckbox">
-                  <label for="rememberMeCheckbox" style="color: #3b4a6b">Ghi nhớ tài khoản</label>
+                  <input type="checkbox" id="rememberMeCheckbox" formControlName="remember_me" value="1">
+                  <label for="rememberMeCheckbox" style="color: #3b4a6b" >Ghi nhớ tài khoản</label>
                 </div>
                 <a href="#" style="margin-bottom: 5px">Quên mật khẩu</a>
+              </div>
+              <div class="cus-error" *ngIf="errorMessage !== ''">
+                <span class="form-text mess">{{errorMessage}}</span>
               </div>
               <button type="submit">Đăng nhập</button>
             </form>
