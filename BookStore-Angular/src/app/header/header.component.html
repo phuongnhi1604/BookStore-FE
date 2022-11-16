@@ -32,14 +32,16 @@
       <a class="navbar-brand" routerLink="/">
         <img src="/assets/images/Blue Modern illustration Book Store Logo.png" alt="logo">
       </a>
-      <form class="input-group mb-3 w-50 mt-2">
-        <input type="text" class="form-control cus-input" placeholder="Tìm kiếm sách..." style="font-size: small">
+      <div class="input-group mb-3 w-50 mt-2">
+        <input type="text" class="form-control cus-input" name="search" placeholder="Tìm kiếm sách..." style="font-size: small"
+               [(ngModel)]="search">
         <div class="input-group-append ">
           <button class="btn btn-outline-warning cus-btn" style="height: 87%" type="button"><img width="20" height="20"
-                                                                                                 src="/assets/images/search.svg">
+                                                                                                 src="/assets/images/search.svg"
+                                                                                                 (click)="searchBook(search)">
           </button>
         </div>
-      </form>
+      </div>
       <div class="cus-cart d-flex">
         <!--          <img src="assets/images/user.svg" style="padding-right: 3px">-->
         <div *ngIf="!isLoggedIn">
@@ -101,7 +103,8 @@
               <div class="dropdown nav-link hover-underline-animation">
                 Danh mục sách
                 <div class="dropdown-content" style="text-align: left;">
-                  <a style="text-transform: capitalize" *ngFor="let category of categoryList" [routerLink]="['/category', category.categoryId]">{{category.categoryName}}</a>
+                  <a style="text-transform: capitalize" *ngFor="let category of categoryList"
+                     [routerLink]="['/category', category.categoryId]">{{category.categoryName}}</a>
                 </div>
               </div>
             </li>

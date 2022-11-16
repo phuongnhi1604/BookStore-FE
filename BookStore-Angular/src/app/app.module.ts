@@ -14,15 +14,14 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BookListComponent} from './home/book-list/book-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {BookListComponent} from './book/book-list/book-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BookListComponent
   ],
     imports: [
         BrowserModule,

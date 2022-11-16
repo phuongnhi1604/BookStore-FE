@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   showHome = false;
   userName: string;
+  search: string;
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router,  private categoryService: CategoryServiceService) { }
 
@@ -24,10 +25,10 @@ export class HeaderComponent implements OnInit {
       this.userName = this.tokenStorageService.getUser().account.username;
       this.roles = this.tokenStorageService.getUser().account.roles[0].roleName;
       this.showHome = this.roles.includes('ROLE_USER');
-
       console.log('roles: ' + this.roles);
     }
     this.getAllCategory();
+    // this.search = (<HTMLInputElement>document.getElementById("username")).value;
   }
   logout() {
     this.tokenStorageService.signOut();
@@ -41,4 +42,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  searchBook(value: string) {
+    this.router.navigateByUrl('/search/' + value);
+  }
 }

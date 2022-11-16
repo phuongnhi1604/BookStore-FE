@@ -38,4 +38,8 @@ export class BookServiceService {
   getAllBookByPromotion(page: number): Observable<IBook[]> {
     return this.http.get<IBook[]>(URL_API + '/promotions');
   }
+
+  searchBook(searchKey: string, page: number): Observable<IBook[]> {
+    return this.http.get<IBook[]>(URL_API + `/search/${searchKey}?page=` + page);
+  }
 }

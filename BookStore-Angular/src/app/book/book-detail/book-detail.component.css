@@ -181,6 +181,7 @@
 .shop_section .container .box:hover{
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
+  border: 1px solid #e6c511;
 }
 .cus-card-detail{
   width: 70rem; padding-top: 8px; border: 1px solid #3b4a6b;
@@ -224,3 +225,21 @@
 .round-black-btn:hover{
   border: black solid;
 }
+
+.shop_section .box {
+  background-color: #faf9fa;
+  position: relative;
+  padding: 10px 15px;
+  margin-top: 25px;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 390px;
+}
+
+.shop_section .cus-price{
+  position: absolute;
+  top: 23rem !important;
+  left: 28px;
+}
+
+

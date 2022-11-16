@@ -4,12 +4,14 @@ import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BookListCategoryComponent} from './book-list-category/book-list-category.component';
 import {BookListComponent} from './book-list/book-list.component';
 import {BookPromotionListComponent} from './book-promotion-list/book-promotion-list.component';
+import {BookSearchComponent} from './book-search/book-search.component';
 
 
 const routes: Routes = [
   {path: '', component: BookListComponent},
   {path: 'detail/:id', component: BookDetailComponent},
   {path: 'category/:id', component: BookListCategoryComponent},
+  {path: 'search/:searchKey', component: BookSearchComponent},
   {path: 'promotions', component: BookPromotionListComponent}
 ];
 

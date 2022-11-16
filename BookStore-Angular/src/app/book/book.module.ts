@@ -7,9 +7,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookListCategoryComponent } from './book-list-category/book-list-category.component';
 import {BookListComponent} from './book-list/book-list.component';
 import { BookPromotionListComponent } from './book-promotion-list/book-promotion-list.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
-  declarations: [BookDetailComponent, BookListCategoryComponent, BookListComponent, BookPromotionListComponent],
+  declarations: [BookDetailComponent, BookListCategoryComponent, BookListComponent, BookPromotionListComponent, BookSearchComponent],
     imports: [
         CommonModule,
         BookRoutingModule,
