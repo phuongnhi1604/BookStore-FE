@@ -165,12 +165,20 @@
 .cus-error .mess {
   color: red;
   font-size: x-small;
+  margin-left: 56px;
 }
 
 .height-input {
   height: 92px;
 }
 
+button:disabled,
+button[disabled] {
+  background: #b7b7b7 !important;
+  color: white;
+  cursor: pointer;
+  pointer-events: none;
+}
 
 /* Reponsive */
 

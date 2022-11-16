@@ -42,11 +42,16 @@
                   <span>Giá: {{book.bookPrice}}.000<sup>đ</sup></span>
                 </div>
                 <div class="product-price-discount" *ngIf="book.bookPromotionId.promotionId !== 1">
-                  <span>Giá: {{promotionPrice}}<span>.000</span><sup>đ</sup></span>
-                  <span class="line-through">{{book.bookPrice}}<span>.000</span><sup>đ</sup></span>
+                  <span>Giá: {{(book.bookPrice-(book.bookPrice*book.bookPromotionId.promotion_percent*0.01)).toFixed(3)}}<sup>đ</sup></span>
+                  <span class="line-through">{{book.bookPrice.toFixed(3)}}<sup>đ</sup></span>
                 </div>
               </div>
+                <div *ngIf="!isLoggedIn">
+                  <button routerLink="/login" class="round-black-btn">Thêm vào giỏ hàng</button>
+                </div>
+              <div *ngIf="isLoggedIn">
                 <button href="#" class="round-black-btn">Thêm vào giỏ hàng</button>
+              </div>
             </div>
           </div>
         </div>
@@ -81,7 +86,7 @@
         <div class="row">
           <div class="col-sm-6 col-xl-3" *ngFor="let bookAuthor of bookListByAuthor">
             <div class="box">
-              <a >
+              <a [routerLink]="['/detail', bookAuthor.bookId]">
                 <div class="img-box">
                   <img src="{{bookAuthor.bookImage}}" alt="image">
                 </div>
@@ -94,67 +99,13 @@
             </div>
             <div class="cus-price" *ngIf="bookAuthor.bookPromotionId.promotionId !== 1">
               Giá:
-              <span class="original">{{bookAuthor.bookPrice}}.000 <sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">39.000<sup>đ</sup></span>
+              <span class="original">{{(bookAuthor.bookPrice-(bookAuthor.bookPrice*bookAuthor.bookPromotionId.promotion_percent*0.01)).toFixed(3)}}<sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">{{bookAuthor.bookPrice.toFixed(3)}}<sup>đ</sup></span>
             </div>
             <div class="cus-price" *ngIf="bookAuthor.bookPromotionId.promotionId === 1">
               Giá:
-              <span class="original">{{bookAuthor.bookPrice}}.000 <sup>đ</sup></span>
+              <span class="original">{{bookAuthor.bookPrice.toFixed(3)}} <sup>đ</sup></span>
             </div>
           </div>
-<!--          <div class="col-sm-6 col-xl-3">-->
-<!--            <div class="box">-->
-<!--              <a href="">-->
-<!--                <div class="img-box">-->
-<!--                  <img src="/assets/images/Toi_tu_hao_la_nguoi_viet_nam-2.jpg" alt="">-->
-<!--                </div>-->
-<!--                <div class="detail-box">-->
-<!--                  <h6>-->
-<!--                    Tôi tự hào là người Việt Nam-->
-<!--                  </h6>-->
-<!--                </div>-->
-<!--              </a>-->
-<!--            </div>-->
-<!--            <div class="cus-price">-->
-<!--              Giá:-->
-<!--              <span>55.000 <sup>đ</sup></span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-sm-6 col-xl-3">-->
-<!--            <div class="box">-->
-<!--              <a href="">-->
-<!--                <div class="img-box">-->
-<!--                  <img src="/assets/images/ChapChungLonLen1.png" alt="">-->
-<!--                </div>-->
-<!--                <div class="detail-box">-->
-<!--                  <h6>-->
-<!--                    Chập chững lớn lên - Mau khỏe nhé bố ơi!-->
-<!--                  </h6>-->
-<!--                </div>-->
-<!--              </a>-->
-<!--            </div>-->
-<!--            <div class="cus-price">-->
-<!--              Giá:-->
-<!--              <span>55.000 <sup>đ</sup></span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-sm-6 col-xl-3">-->
-<!--            <div class="box">-->
-<!--              <a href="">-->
-<!--                <div class="img-box">-->
-<!--                  <img src="/assets/images/ChapChungLonLen2.png" alt="">-->
-<!--                </div>-->
-<!--                <div class="detail-box">-->
-<!--                  <h6>-->
-<!--                    Chập chững lớn lên - Đến lượt cậu đấy!-->
-<!--                  </h6>-->
-<!--                </div>-->
-<!--              </a>-->
-<!--            </div>-->
-<!--            <div class="cus-price">-->
-<!--              Giá:-->
-<!--              <span>55.000 <sup>đ</sup></span>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
       </div>
     </section>

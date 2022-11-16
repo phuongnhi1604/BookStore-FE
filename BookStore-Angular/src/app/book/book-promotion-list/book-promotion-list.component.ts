@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
+import {IBook} from '../../model/book/ibook';
 import {BookServiceService} from '../../service/book/book-service.service';
 import {Router} from '@angular/router';
-import {IBook} from '../../model/book/ibook';
 
 @Component({
-  selector: 'app-book-list-more',
-  templateUrl: './book-list-more.component.html',
-  styleUrls: ['./book-list-more.component.css']
+  selector: 'app-book-promotion-list',
+  templateUrl: './book-promotion-list.component.html',
+  styleUrls: ['./book-promotion-list.component.css']
 })
-export class BookListMoreComponent implements OnInit {
+export class BookPromotionListComponent implements OnInit {
   bookList: IBook[] = [];
   page = 1;
   size: number;
@@ -19,19 +19,19 @@ export class BookListMoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllTopNewBook(this.page);
+    this.getAllBookByPromotion(this.page);
   }
 
-  getAllTopNewBook(page: number) {
+  getAllBookByPromotion(page: number) {
     this.page = page;
-    this.bookService.getAllTopNewBook(this.page - 1).subscribe((data: any) => {
+    this.bookService.getAllBookByPromotion(this.page - 1).subscribe((data: any) => {
         this.bookList = data.content;
         this.size = data.size;
         this.totalElements = data.totalElements;
       },
       () => {
         this.page--;
-        this.getAllTopNewBook(this.page);
+        this.getAllBookByPromotion(this.page);
       },
       () => {
       }

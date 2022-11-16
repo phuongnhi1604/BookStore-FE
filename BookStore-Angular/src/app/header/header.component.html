@@ -101,7 +101,7 @@
               <div class="dropdown nav-link hover-underline-animation">
                 Danh mục sách
                 <div class="dropdown-content" style="text-align: left;">
-                  <a style="text-transform: capitalize" *ngFor="let category of categoryList" [routerLink]="['/book/category', category.categoryId]">{{category.categoryName}}</a>
+                  <a style="text-transform: capitalize" *ngFor="let category of categoryList" [routerLink]="['/category', category.categoryId]">{{category.categoryName}}</a>
                 </div>
               </div>
             </li>
@@ -113,7 +113,7 @@
                 mãi</a>
             </li>
             <li class="nav-item cus_font">
-              <a class="nav-link hover-underline-animation" href="contact.html">Giảm giá đặc biệt</a>
+              <a class="nav-link hover-underline-animation" routerLink="/promotions">Giảm giá đặc biệt</a>
             </li>
           </ul>
         </div>

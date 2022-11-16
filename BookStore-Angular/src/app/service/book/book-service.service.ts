@@ -30,4 +30,12 @@ export class BookServiceService {
   getAllBookByAuthorId(id: number): Observable<IBook[]> {
     return this.http.get<IBook[]>(URL_API + `/author/${id}`);
   }
+
+  getAllBookSameAuthor(id: number): Observable<IBook[]> {
+    return this.http.get<IBook[]>(URL_API + `/sameAuthor/${id}`);
+  }
+
+  getAllBookByPromotion(page: number): Observable<IBook[]> {
+    return this.http.get<IBook[]>(URL_API + '/promotions');
+  }
 }

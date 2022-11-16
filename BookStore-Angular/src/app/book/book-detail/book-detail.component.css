@@ -219,3 +219,8 @@
     height: 600px;
   }
 }
+
+
+.round-black-btn:hover{
+  border: black solid;
+}

@@ -30,11 +30,6 @@
                   <p>
                     Fahasa nhận đặt hàng trực tuyến và giao hàng tận nơi trên toàn quốc. Fahasa mang sách đến mọi nhà.
                   </p>
-                  <div class="btn-box">
-                    <a href="" class="btn1">
-                      Mua ngay
-                    </a>
-                  </div>
                 </div>
               </div>
               <div class="col-md-6">
@@ -114,7 +109,7 @@
     <div class="row">
       <div class="col-sm-6 col-xl-3" *ngFor="let book of bookList | paginate: {itemsPerPage: size, currentPage: page, totalItems: totalElements}; let i = index">
         <div class="box">
-          <a [routerLink]="['/book/detail', book.bookId]">
+          <a [routerLink]="['/detail', book.bookId]">
             <div class="img-box">
               <img src="{{book.bookImage}}" alt="image">
             </div>
