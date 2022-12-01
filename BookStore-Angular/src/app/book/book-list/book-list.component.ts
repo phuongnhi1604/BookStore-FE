@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BookServiceService} from '../../service/book/book-service.service';
 import {Router} from '@angular/router';
 import {IBook} from '../../model/book/ibook';
+import {TokenStorageService} from '../../service/security/token-storage.service';
 
 @Component({
   selector: 'app-book-list',
@@ -13,9 +14,9 @@ export class BookListComponent implements OnInit {
   page = 1;
   size: number;
   totalElements: number;
-
   constructor(private bookService: BookServiceService,
-              private router: Router) {
+              private router: Router,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {

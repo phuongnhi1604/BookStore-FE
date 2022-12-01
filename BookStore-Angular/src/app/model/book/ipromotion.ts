@@ -1,5 +1,5 @@
 export interface IPromotion {
   promotionId?: number;
-  promotion_percent?: number;
+  promotionPercent?: number;
   promotionFlag?: boolean;
 }

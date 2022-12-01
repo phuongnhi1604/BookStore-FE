@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {APP_BASE_HREF} from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 import {SecurityModule} from './security/security.module';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
@@ -16,6 +16,7 @@ import {environment} from '../environments/environment';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {BookListComponent} from './book/book-list/book-list.component';
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -23,21 +24,23 @@ import {BookListComponent} from './book/book-list/book-list.component';
     HeaderComponent,
     FooterComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SecurityModule,
-        RouterModule,
-        HttpClientModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        FormsModule,
-        ReactiveFormsModule,
-        NgxPaginationModule
-    ],
-  providers: [authInterceptorProviders,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SecurityModule,
+    RouterModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    NotifierModule
+  ],
+  providers: [HeaderComponent, authInterceptorProviders,
     JwtHelperService,
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
-    {provide: APP_BASE_HREF, useValue : '/' }] ,
+    {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

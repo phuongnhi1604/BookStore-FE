@@ -9,7 +9,7 @@
           <a class="nav-link"><small>|</small></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><small>LỊCH SỬ GIAO DỊCH</small></a>
+          <a class="nav-link" routerLink="/history"><small>LỊCH SỬ GIAO DỊCH</small></a>
         </li>
         <li class="nav-item">
           <a class="nav-link"><small>|</small></a>
@@ -68,11 +68,11 @@
           </a>
         </div>
         <div class="cus-cart-position" *ngIf="isLoggedIn">
-          <a routerLink="cart/detail">
+          <a routerLink="/cart">
             <!-- <i class="fa fa-cart-plus" aria-hidden="true"></i> -->
             <!-- <i class="fa fa-shopping-cart"></i> -->
             <!-- <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/000000/external-cart-supermarket-wanicon-lineal-wanicon.png"/> -->
-            <img src="/assets/images/shopping-bag.svg"/> <span class="badge" id="lblCartCount">12</span>
+            <img src="/assets/images/shopping-bag.svg"/> <span class="badge" id="lblCartCount">{{totalQuantityCart}}</span>
           </a>
         </div>
 

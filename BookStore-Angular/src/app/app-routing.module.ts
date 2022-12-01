@@ -10,15 +10,17 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./book/book.module').then(module => module.BookModule)
-  },
-  {
-    path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then(module => module.CartModule)
   }
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./cart/cart.module').then(module => module.CartModule)
+  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

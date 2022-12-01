@@ -22,11 +22,11 @@
         </div>
         <div class="cus-price" *ngIf="book.bookPromotionId.promotionId !== 1">
           Giá:
-          <span class="original">{{(book.bookPrice-(book.bookPrice*book.bookPromotionId.promotion_percent*0.01)).toFixed(3)}}<sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">{{book.bookPrice.toFixed(3)}}<sup>đ</sup></span>
+          <span class="original">{{(book.bookPrice-(book.bookPrice*book.bookPromotionId.promotionPercent*0.01)) | currency: 'VND'}}<sup>đ</sup></span><span style="padding-left: 20px; font-size: small;text-decoration-line: line-through">{{book.bookPrice | currency: 'VND'}}<sup>đ</sup></span>
         </div>
         <div class="cus-price" *ngIf="book.bookPromotionId.promotionId === 1">
           Giá:
-          <span class="original">{{book.bookPrice.toFixed(3)}} <sup>đ</sup></span>
+          <span class="original">{{book.bookPrice | currency: 'VND'}} <sup>đ</sup></span>
         </div>
       </div>
     </div>

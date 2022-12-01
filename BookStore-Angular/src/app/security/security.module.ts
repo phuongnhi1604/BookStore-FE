@@ -5,6 +5,7 @@ import { SecurityRoutingModule } from './security-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NotifierModule} from 'angular-notifier';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         SecurityRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NotifierModule
     ]
 })
 export class SecurityModule { }

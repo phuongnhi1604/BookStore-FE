@@ -1,0 +1,21 @@
+<div class="container layout_padding" style="font-family: 'Poppins', sans-serif; margin-top: -30px">
+  <table class="table  table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Mã đơn hàng</th>
+      <th scope="col">Tiền thanh toán</th>
+      <th scope="col">Ngày thanh toán</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let cart of cartList | paginate: {itemsPerPage: size, currentPage: page, totalItems: totalElements}">
+    <tr>
+      <td>{{cart.cartCode}}</td>
+      <td>{{cart.cartTotalMoney}}</td>
+      <td>{{cart.cartPurchaseDate}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="totalElements > 6" style="display: flex; justify-content: center; align-items: center; margin-top: 30px">
+    <pagination-controls (pageChange)="getAllCartPayed(accountId, $event)"></pagination-controls>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {SecurityServiceService} from '../../service/security/security-service.service';
 import {TokenStorageService} from '../../service/security/token-storage.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private tokenStorageService: TokenStorageService,
               private securityService: SecurityServiceService,
-              private router: Router) {
+              private router: Router,
+              private notifier: NotifierService) {
+    this.notifier = notifier;
   }
 
   ngOnInit(): void {
@@ -77,6 +80,7 @@ export class LoginComponent implements OnInit {
     }, () => {
       this.router.navigateByUrl('');
       window.location.assign('http://localhost:4200');
+      this.notifier.notify('success', 'Đăng nhập thành công');
     });
   }
 
